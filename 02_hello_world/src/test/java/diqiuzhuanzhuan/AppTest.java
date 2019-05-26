@@ -22,5 +22,7 @@ public class AppTest
     @Test
     public void test_add() {
         assertEquals(3, new App().add(1, 2));
+        assertEquals(0, new App().add(1, -1));
+        assertEquals(-4, new App().add(1, -5));
     }
 }
