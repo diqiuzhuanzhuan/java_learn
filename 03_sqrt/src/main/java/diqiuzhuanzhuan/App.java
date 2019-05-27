@@ -1,8 +1,6 @@
 package diqiuzhuanzhuan;
 import org.apache.commons.math3.analysis.function.Sqrt;
 
-import java.lang.reflect.Array;
-
 /**
  * Hello world!
  *
