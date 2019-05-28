@@ -20,21 +20,22 @@ import java.util.Arrays;
  */
 public class App
 {
+    private SavedModelBundle _bundle;
     public App()
     {
-        getResources();
-
+        try {
+            loadModel();
+        }
+        catch (IOException e) {
+            System.out.println("加载模型资源失败");
+        }
     }
 
     public static void main( String[] args )
     {
         System.out.println( "Hello World!" );
-        try {
-            new App().loadModel();
-        }
-        catch (IOException e) {
-            System.out.println(e);
-        }
+        App app = new App();
+        app.predict();
     }
 
     public File getResources()
@@ -44,23 +45,27 @@ public class App
         return file;
     }
 
-    public void loadModel() throws IOException
-    {
+    public void loadModel() throws IOException {
         String file = this.getResources().toString();
-        SavedModelBundle bundle = SavedModelBundle.load(file, "serve");
+        _bundle = SavedModelBundle.load(file, "serve");
+    }
+
+    public void predict()
+    {
+
         float[][] matrix = new float[1][784];
         Arrays.fill(matrix[0], 0.85f);
         Tensor t = Tensor.create(matrix);
         System.out.println(t);
-        Tensor<Float> res = bundle.session().runner().feed("x", t).fetch("y").run().get(0).expect(Float.class);
+        Tensor<Float> res = _bundle.session().runner().feed("x", t).fetch("y").run().get(0).expect(Float.class);
         int maxObjects = (int) res.shape()[1];
         float[] y = res.copyTo(new float[1][maxObjects])[0];
-        System.out.println(y[0]);
         float sum = 0;
         for (int i = 0; i < y.length; i++){
+            System.out.println(y[i]);
             sum += y[i];
         }
-        System.out.println(sum);
+        System.out.println("the sum is " + sum);
     }
 
 
