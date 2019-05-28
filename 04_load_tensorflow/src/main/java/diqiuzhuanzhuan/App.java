@@ -35,7 +35,9 @@ public class App
     {
         System.out.println( "Hello World!" );
         App app = new App();
-        app.predict();
+        float[][] matrix = new float[1][784];
+        Arrays.fill(matrix[0], 0.8f);
+        System.out.println(app.predict(matrix));
     }
 
     public File getResources()
@@ -48,6 +50,31 @@ public class App
     public void loadModel() throws IOException {
         String file = this.getResources().toString();
         _bundle = SavedModelBundle.load(file, "serve");
+    }
+
+    public int predict(float[][] matrix)
+    {
+        assert matrix.length == 784 * 1;
+        Tensor t = Tensor.create(matrix);
+        Tensor<Float> res = _bundle.session().runner().feed("x", t).fetch("y").run().get(0).expect(Float.class);
+        int maxObjects = (int) res.shape()[1];
+        float[] y = res.copyTo(new float[1][maxObjects])[0];
+        int maxIndex = argmax(y);
+        return maxIndex;
+    }
+
+    protected static int argmax(float[] a) {
+        float max = -1.0F / 0.0f;
+        int argmax = 0;
+
+        for(int i = 0; i < a.length; ++i) {
+            if (a[i] > max) {
+                max = a[i];
+                argmax = i;
+            }
+        }
+
+        return argmax;
     }
 
     public void predict()
