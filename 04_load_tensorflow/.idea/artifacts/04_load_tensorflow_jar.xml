@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="04_load_tensorflow:jar">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="04_load_tensorflow.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="04_load_tensorflow" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-io/commons-io/2.6/commons-io-2.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/tensorflow/libtensorflow_jni/1.13.1/libtensorflow_jni-1.13.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/tensorflow/libtensorflow/1.13.1/libtensorflow-1.13.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/tensorflow/tensorflow/1.13.1/tensorflow-1.13.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

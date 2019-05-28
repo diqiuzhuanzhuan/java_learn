@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Class-Path: commons-io-2.6.jar libtensorflow_jni-1.13.1.jar libtensorf
+ low-1.13.1.jar tensorflow-1.13.1.jar
+Main-Class: diqiuzhuanzhuan.App
+
