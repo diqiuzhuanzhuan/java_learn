@@ -56,6 +56,11 @@ public class App
         int maxObjects = (int) res.shape()[1];
         float[] y = res.copyTo(new float[1][maxObjects])[0];
         System.out.println(y[0]);
+        float sum = 0;
+        for (int i = 0; i < y.length; i++){
+            sum += y[i];
+        }
+        System.out.println(sum);
     }
 
 
