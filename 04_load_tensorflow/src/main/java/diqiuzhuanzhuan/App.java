@@ -2,16 +2,9 @@ package diqiuzhuanzhuan;
 
 import java.io.File;
 
-import com.sun.xml.internal.ws.api.message.ExceptionHasMessage;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-import org.apache.commons.io.IOUtils;
-import org.tensorflow.Graph;
 import org.tensorflow.SavedModelBundle;
-import org.tensorflow.Session;
 import org.tensorflow.Tensor;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -38,6 +31,7 @@ public class App
         float[][] matrix = new float[1][784];
         Arrays.fill(matrix[0], 0.8f);
         System.out.println(app.predict(matrix));
+        app.predict();
     }
 
     public File getResources()
