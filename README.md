@@ -11,3 +11,9 @@
 03_sqrt: 重点在于使用maven管理工具来引入第三方依赖包，并使用之。
 
 04_load_tensorflow: 重点在于load tensorflow保存的模型，并通过java来调用模型，获得预测结果
+
+05_spring_boot：重点在于通过sprint-boot的框架启动一个web server的服务。
+
+06_map: 重点在于java中map的应用。
+
+07_use_annoy: annoy 是spotify公司开源的一个空间描述的数据结构，在近邻搜索上面有奇效，本示例重点在于演示如何通过java来使用它。
